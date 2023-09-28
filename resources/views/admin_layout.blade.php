@@ -87,7 +87,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <a class="active" href="{{ URL::to('/dashboard') }}">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Tổng quan</span>
-                                <span>Tổng quan</span>
                             </a>
                         </li>
 
