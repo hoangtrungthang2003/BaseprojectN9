@@ -132,8 +132,20 @@ class ProductController extends Controller
         ->where('tbl_product.product_id', $product_id)
         ->get();
 
+        foreach($details_product as $key => $value){
+            $category_id = $value->category_id;
+        }
+
+        $related_product = DB::table('tbl_product')
+        ->join('tbl_category_product', 'tbl_category_product.category_id', '=', 'tbl_product.category_id')
+        ->join('tbl_brand_product', 'tbl_brand_product.brand_id', '=', 'tbl_product.brand_id')
+        ->where('tbl_category_product.category_id',$category_id)
+        ->whereNotIn('tbl_product.product_id',[$product_id])
+        ->get();
+
         return view('pages.sanpham.show_details')->with('category',$cate_product)
         ->with('brand', $brand_product)
-        ->with('product_details', $details_product);
+        ->with('product_details', $details_product)
+        ->with('relate',$related_product);
     }
 }

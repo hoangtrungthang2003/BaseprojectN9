@@ -43,15 +43,20 @@
                     <h2>{{ $value->product_name }}</h2>
                     <p>Mã ID: {{ $value->product_id }}</p>
                     <img src="{{ URL::to('public/frontend/images/product-details/rating.png') }}" alt="" />
-                    <span>
-                        <span>{{ number_format($value->product_price) . 'VND' }}</span>
-                        <label>Số lượng:</label>
-                        <input type="number" min="1" value="1" />
-                        <button type="button" class="btn btn-fefault cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Thêm giỏ hàng
-                        </button>
-                    </span>
+
+                    <form action="{{URL::to('/save-cart')}}" method="POST">
+                        {{ csrf_field() }}
+                        <span>
+                            <span>{{ number_format($value->product_price) . 'VND' }}</span>
+                            <label>Số lượng:</label>
+                            <input name="qty" type="number" min="1" value="1" />
+                            <input name="productid_hidden" type="number" min="1" value="{{$value->product_id}}" />
+                            <button type="submit" class="btn btn-fefault cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                Thêm giỏ hàng
+                            </button>
+                        </span>
+                    </form>
                     <p><b>Tình tạng:</b> Còn hàng</p>
                     <p><b>Điều kiện:</b> Mới 100%</p>
                     <p><b>Thương hiệu:</b> {{ $value->brand_name }}</p>
@@ -111,98 +116,31 @@
         </div><!--/category-tab-->
     @endforeach
     <div class="recommended_items"><!--recommended_items-->
-        <h2 class="title text-center">Sản phẩm gợi ý</h2>
+        <h2 class="title text-center">Sản phẩm liên quan</h2>
 
         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item active">
+                @foreach($relate as $key => $lienquan)
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="{{ URL::to('public/frontend/images/home/recommend1.jpg') }}"
+                                    <img src="{{ URL::to('public/uploads/product/' . $lienquan->product_image) }}"
                                         alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                            class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
+                                    <h2>{{ number_format($lienquan->product_price) . 'VND' }}</h2>
+                                    <p>{{ $lienquan->product_name }}</p>
+                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm
+                                        giỏ
+                                        hàng</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{ URL::to('public/frontend/images/home/recommend2.jpg') }}"
-                                        alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                            class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{ URL::to('public/frontend/images/home/recommend3.jpg') }}"
-                                        alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                            class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                @endforeach
+
                 </div>
-                <div class="item">
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{ URL::to('public/frontend/images/home/recommend1.jpg') }}"
-                                        alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                            class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{ URL::to('public/frontend/images/home/recommend2.jpg') }}"
-                                        alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                            class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{ URL::to('public/frontend/images/home/recommend3.jpg') }}"
-                                        alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                            class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
                 <i class="fa fa-angle-left"></i>
