@@ -26,6 +26,7 @@
 </head><!--/head-->
 
 <body>
+    
     <header id="header"><!--header-->
         <div class="header_top"><!--header_top-->
             <div class="container">
@@ -130,7 +131,7 @@
         <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-9">
+                    <div class="col-sm-7">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse"
                                 data-target=".navbar-collapse">
@@ -157,10 +158,14 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-5">
+                        <form action="{{URL::to('/tim-kiem')}}" method="POST">
+                            {{ csrf_field()}}
                         <div class="search_box pull-right">
-                            <input type="text" placeholder="Search" />
+                            <input type="text" name="keyword_submit" placeholder="Tìm kiếm sản phẩm" />
+                            <input type="submit" style="margin-top: 0px;color:#000" name="search_items" class="btn btn-primary btn-sm" value="Tìm kiếm">
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>

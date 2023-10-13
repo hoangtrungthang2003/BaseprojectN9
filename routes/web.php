@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 //frontend
 Route::get('/', [HomeController::class, 'show']);//index = show
 Route::get('/trang-chu', [HomeController::class, 'show']);
+Route::post('/tim-kiem', [HomeController::class, 'show']);
 
 //Danh muc san pham trang chu
 Route::get('/danh-muc-san-pham/{category_id}', [CategoryProduct::class, 'show_category_home']);
@@ -84,6 +85,15 @@ Route::get('/delete-to-cart/{rowId}', [CartController::class, 'delete_to_cart'])
 
 //Checkout
 Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
+Route::get('/logout-checkout', [CheckoutController::class, 'logout_checkout']);
 Route::post('/add-customer', [CheckoutController::class, 'add_customer']);
+Route::post('/order-place', [CheckoutController::class, 'order_place']);
+Route::post('/login-customer', [CheckoutController::class, 'login_customer']);
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::get('/payment', [CheckoutController::class, 'payment']);
 Route::post('/save-checkout-customer', [CheckoutController::class, 'save_checkout_customer']);
+
+
+//
+Route::get('/manage_order', [CheckoutController::class, 'manage_order']);
+Route::get('/view_order/{orderId}', [CheckoutController::class, 'view_order']);
