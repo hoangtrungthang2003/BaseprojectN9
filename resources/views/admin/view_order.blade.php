@@ -20,7 +20,7 @@
             <tr>
               
               <th>Tên khách hàng</th>
-              <th>số điẹn thoại </th>
+              <th>số điện thoại </th>
               
               <th style="width:30px;"></th>
             </tr>

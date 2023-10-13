@@ -30,11 +30,13 @@ class CheckoutController extends Controller
         ->join('tbl_customers', 'tbl_order.customer_id', '=', 'tbl_customers.customer_id')
         ->join('tbl_shipping', 'tbl_order.shipping_id', '=', 'tbl_shipping.shipping_id')
         ->join('tbl_order_details', 'tbl_order.order_id', '=', 'tbl_order_details.order_id')
+        //->where('tbl_order.order_id', $orderId)
         ->select('tbl_order.*', 'tbl_customers.*', 'tbl_shipping.*', 'tbl_order_details.*')->first();
-        
-        $manager_order_by_id = view('admin.manage_order')->with('order_by_id', $order_by_id);
+       
+        $manager_order_by_id = view('admin.view_order')->with('order_by_id', $order_by_id);
         return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
-        
+      
+        //return view('admin.view_order');
     }
 
     public function login_checkout(){
@@ -86,7 +88,7 @@ class CheckoutController extends Controller
         return view('pages.checkout.payment')->with('category',$cate_product)->with('brand', $brand_product);
     }
 
-    public function order_place(){
+    public function order_place(Request $request){
         //get payment_method
         $data = array();
         $data['payment_method'] = $request->payment_option;

@@ -72,7 +72,7 @@
             </table>
         </div>
         <h4 style="margin: 40px 0;font-size: 20px;">Chọn hình thức thanh toán</h4>
-        <form method="POST" action="{{ULR::to('/order-place')}}">
+        <form method="POST" action="{{URL::to('/order-place')}}">
             {{ csrf_field()}}
         <div class="payment-options">
                 <span>
