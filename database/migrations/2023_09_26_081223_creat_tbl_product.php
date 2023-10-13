@@ -20,7 +20,6 @@ return new class extends Migration
             $table->text('product_content');
             $table->string('product_price');
             $table->text('product_image');
-            $table->text('product_contents');
             $table->string('product_size');
             $table->string('product_color');
             $table->integer('product_status');
