@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-use Cart;
+use Illuminate\Support\Facades\Session;
 use PSpell\Dictionary;
 session_start();
 
@@ -24,18 +24,17 @@ class CheckoutController extends Controller
         }
     }
 
-    public function view_order($orderId){
+    public function view_order( $orderId){
         $this->AuthLogin();
         $order_by_id = DB::table('tbl_order')
         ->join('tbl_customers', 'tbl_order.customer_id', '=', 'tbl_customers.customer_id')
         ->join('tbl_shipping', 'tbl_order.shipping_id', '=', 'tbl_shipping.shipping_id')
         ->join('tbl_order_details', 'tbl_order.order_id', '=', 'tbl_order_details.order_id')
-        //->where('tbl_order.order_id', $orderId)
         ->select('tbl_order.*', 'tbl_customers.*', 'tbl_shipping.*', 'tbl_order_details.*')->first();
-       
+
         $manager_order_by_id = view('admin.view_order')->with('order_by_id', $order_by_id);
         return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
-      
+
         //return view('admin.view_order');
     }
 
@@ -113,7 +112,7 @@ class CheckoutController extends Controller
             $order_d_data['product_name'] = $v_content->name;
             $order_d_data['product_price'] = $v_content->price;
             $order_d_data['product_sale_quantity'] = $v_content->qty;
-            DB::table('tbl_order_details')->insert($data);
+            DB::table('tbl_order_details')->insert($order_d_data);
         }
         if($data['payment_method'] == 1){
             echo 'thanh toan the atm';
