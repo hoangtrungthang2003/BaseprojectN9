@@ -78,9 +78,15 @@
             </table>
         </div>
         <h4 style="margin: 40px 0;font-size: 20px;">Chọn hình thức thanh toán</h4>
+<<<<<<< HEAD
         <form method="POST" action="{{ URL::to('/order-place') }}">
             {{ csrf_field() }}
             <div class="payment-options">
+=======
+        <form method="POST" action="{{URL::to('/order-place')}}">
+            {{ csrf_field()}}
+        <div class="payment-options">
+>>>>>>> e172d1532b6cb26d7c1b542044652a23ba9aaaa6
                 <span>
                     <label><input name="payment_option" value="1" type="checkbox"> Trả bằng thẻ ATM</label>
                 </span>

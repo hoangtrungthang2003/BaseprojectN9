@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use PSpell\Dictionary;
-
 session_start();
 
 class CategoryProduct extends Controller

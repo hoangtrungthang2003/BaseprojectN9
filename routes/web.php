@@ -103,4 +103,4 @@ Route::post('/save-checkout-customer', [CheckoutController::class, 'save_checkou
 
 //
 Route::get('/manage_order', [CheckoutController::class, 'manage_order']);
-Route::get('/view_order/{orderId}', [CheckoutController::class, 'view_order']);
+Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
