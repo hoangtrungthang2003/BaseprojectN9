@@ -6,11 +6,9 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-<<<<<<< HEAD
-use Gloudemans\Shoppingcart\Facades\Cart;
-=======
+
 use Illuminate\Support\Facades\Session;
->>>>>>> e172d1532b6cb26d7c1b542044652a23ba9aaaa6
+
 use PSpell\Dictionary;
 session_start();
 
