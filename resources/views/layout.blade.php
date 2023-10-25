@@ -26,7 +26,7 @@
 </head><!--/head-->
 
 <body>
-    
+
     <header id="header"><!--header-->
         <div class="header_top"><!--header_top-->
             <div class="container">
@@ -91,36 +91,41 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                
+
                                 <li><a href="#"><i class="fa fa-star"></i> Yêu thích</a></li>
                                 <?php
                                     $customer_id = Session::get('customer_id');
                                     if($customer_id!=NULL){
 
                                 ?>
-                                <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+                                <li><a href="{{ URL::to('/checkout') }}"><i class="fa fa-crosshairs"></i> Thanh toán</a>
+                                </li>
                                 <?php
                                     }else {
                                         ?>
-                                        <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
-                                        <?php
+                                <li><a href="{{ URL::to('/login-checkout') }}"><i class="fa fa-crosshairs"></i> Thanh
+                                        toán</a></li>
+                                <?php
                                     }
                                         ?>
-                                <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                                <li><a href="{{ URL::to('/gio-hang') }}"><i class="fa fa-shopping-cart"></i> Giỏ
+                                        hàng</a></li>
                                 <?php
                                     $customer_id = Session::get('customer_id');
                                     if($customer_id!=NULL){
 
                                 ?>
-                                <li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
+                                <li><a href="{{ URL::to('/logout-checkout') }}"><i class="fa fa-lock"></i> Đăng
+                                        xuất</a></li>
                                 <?php
                                     }else {
                                         ?>
-                                        <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
-                                        <?php
+                                <li><a href="{{ URL::to('/login-checkout') }}"><i class="fa fa-lock"></i> Đăng nhập</a>
+                                </li>
+                                <?php
                                     }
                                         ?>
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -153,19 +158,20 @@
                                 <li class="dropdown"><a href="#">Tin tức<i class="fa fa-angle-down"></i></a>
 
                                 </li>
-                                <li><a href="{{URL::to('/show-cart')}}">Giỏ hàng</a></li>
+                                <li><a href="{{ URL::to('/show-cart') }}">Giỏ hàng</a></li>
                                 <li><a href="contact-us.html">Contact</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-5">
-                        <form action="{{URL::to('/tim-kiem')}}" method="POST">
-                            {{ csrf_field()}}
-                        <div class="search_box pull-right">
-                            <input type="text" name="keyword_submit" placeholder="Tìm kiếm sản phẩm" />
-                            <input type="submit" style="margin-top: 0px;color:#000" name="search_items" class="btn btn-primary btn-sm" value="Tìm kiếm">
-                        </div>
-                    </form>
+                        <form action="{{ URL::to('/tim-kiem') }}" method="POST">
+                            {{ csrf_field() }}
+                            <div class="search_box pull-right">
+                                <input type="text" name="keyword_submit" placeholder="Tìm kiếm sản phẩm" />
+                                <input type="submit" style="margin-top: 0px;color:#000" name="search_items"
+                                    class="btn btn-primary btn-sm" value="Tìm kiếm">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -256,7 +262,9 @@
                             @foreach ($category as $item => $cate)
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="{{URL::to('danh-muc-san-pham/'.$cate->category_id)}}">{{ $cate->category_name }}</a></h4>
+                                        <h4 class="panel-title"><a
+                                                href="{{ URL::to('danh-muc-san-pham/' . $cate->category_id) }}">{{ $cate->category_name }}</a>
+                                        </h4>
                                     </div>
                                 </div>
                             @endforeach
@@ -267,7 +275,8 @@
                             @foreach ($brand as $item => $brand)
                                 <div class="brands-name">
                                     <ul class="nav nav-pills nav-stacked">
-                                        <li><a href="{{URL::to('thuong-hieu-san-pham/'.$brand->brand_id)}}"> <span class="pull-right">(50)</span>{{ $brand->brand_name }}</a></li>
+                                        <li><a href="{{ URL::to('thuong-hieu-san-pham/' . $brand->brand_id) }}"> <span
+                                                    class="pull-right">(50)</span>{{ $brand->brand_name }}</a></li>
                                     </ul>
                                 </div>
                             @endforeach
@@ -316,8 +325,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="{{ 'public/frontend/images/home/iframe1.png' }}"
-                                            alt="" />
+                                        <img src="{{ 'public/frontend/images/home/iframe1.png' }}" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
@@ -332,8 +340,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="{{ 'public/frontend/images/home/iframe2.png' }}"
-                                            alt="" />
+                                        <img src="{{ 'public/frontend/images/home/iframe2.png' }}" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
@@ -348,8 +355,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="{{ 'public/frontend/images/home/iframe3.png' }}"
-                                            alt="" />
+                                        <img src="{{ 'public/frontend/images/home/iframe3.png' }}" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
@@ -364,8 +370,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="{{ 'public/frontend/images/home/iframe4.png' }}"
-                                            alt="" />
+                                        <img src="{{ 'public/frontend/images/home/iframe4.png' }}" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
@@ -472,6 +477,48 @@
     <script src="{{ asset('public/frontend/js/price-range.js') }}"></script>
     <script src="{{ asset('public/frontend/js/jquery.prettyPhoto.js') }}"></script>
     <script src="{{ asset('public/frontend/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.add-to-cart').click(function() {
+                var id = $(this).data('id_product');
+                var cart_product_id = $('.cart_product_id_' + id).val();
+                var cart_product_name = $('.cart_product_name_' + id).val();
+                var cart_product_image = $('.cart_product_image_' + id).val();
+                var cart_product_price = $('.cart_product_price_' + id).val();
+                var cart_product_qty = $('.cart_product_qty_' + id).val();
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: '{{ url('/add-cart-ajax') }}',
+                    method: 'POST',
+                    data: {
+                        cart_product_id: cart_product_id,
+                        cart_product_name: cart_product_name,
+                        cart_product_image: cart_product_image,
+                        cart_product_price: cart_product_price,
+                        cart_product_qty: cart_product_qty,
+                        _token: _token
+                    },
+                    success: function(data) {
+                        Swal.fire({
+                            title: 'Thành công!',
+                            text: "Đã thêm sản phẩm vào giỏ hàng!",
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#32CD32',
+                            cancelButtonText: 'Xem tiếp',
+                            confirmButtonText: 'Xem giỏ hàng'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = '{{ url('/gio-hang') }}';
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

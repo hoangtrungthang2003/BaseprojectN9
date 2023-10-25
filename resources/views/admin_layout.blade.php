@@ -280,6 +280,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         });
     </script>
+    <script src="https://cdn.tiny.cloud/1/cn4n0ijblnfk6yrhiudmbpmgx6ytkepsu3zbhlwt2gnl3mdp/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+       tinymce.init({
+         selector: '#ckeditor1',
+         plugins: 'powerpaste advcode table lists checklist',
+         toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
+       });
+    </script>
+ 
     <!-- //calendar -->
 </body>
 

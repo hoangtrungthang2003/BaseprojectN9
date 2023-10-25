@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-use Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use PSpell\Dictionary;
 session_start();
 
@@ -86,7 +86,7 @@ class CheckoutController extends Controller
         return view('pages.checkout.payment')->with('category',$cate_product)->with('brand', $brand_product);
     }
 
-    public function order_place(){
+    public function order_place(Request $request){
         //get payment_method
         $data = array();
         $data['payment_method'] = $request->payment_option;
