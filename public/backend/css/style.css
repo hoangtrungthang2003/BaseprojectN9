@@ -562,6 +562,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 .position-center {
     width:62%;
     margin: 0 auto;
+    margin-bottom: 20px;
 }
 /*----*/
 .notify-arrow {
