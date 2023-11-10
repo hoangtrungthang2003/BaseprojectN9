@@ -107,7 +107,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <span>Đơn hàng</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="{{ URL::to('/manage_order') }}">Quản lý đơn </a>
+                                <li><a href="{{ URL::to('/manage_order') }}">Quản lý đơn hàng</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-book"></i>
+                                <span>Vận chuyển</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="{{ URL::to('/delivery') }}">Quản lý vận chuyển</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-book"></i>
+                                <span>Mã giảm giá</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="{{ URL::to('/insert-coupon') }}">Quản lý mã giảm giá</a>
+                                </li>
+                                <li><a href="{{ URL::to('/list-coupon') }}">Liệt kê mã giảm giá</a>
                                 </li>
                             </ul>
                         </li>
@@ -171,6 +193,86 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
     <script src="{{ asset('public/backend/js/jquery.scrollTo.js') }}"></script>
     <!-- morris JavaScript -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            fetch_delivery();
+            function fetch_delivery(){
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: '{{ url('/select-feeship') }}',
+                    method: 'POST',
+                    data: {
+                        _token: _token
+                    },
+                    success: function(data) {
+                        $('#load_delivery').html(data);
+                    }
+                });
+            }
+            $(document).on('blur','.fee_feeship_edit', function(){
+                var feeship_id = $(this).data('feeship_id');
+                var fee_value = $(this).text();
+                var _token = $('input[name="_token"]').val();
+                // alert(fee_value);
+                $.ajax({
+                    url: '{{ url('/update-feeship') }}',
+                    method: 'POST',
+                    data: {
+                        feeship_id: feeship_id,
+                        fee_value:fee_value,
+                        _token: _token
+                    },
+                    success: function(data) {
+                        fetch_delivery();
+                    }
+                });
+            });
+            $('.add_delivery').click(function(){
+                var city = $('.city').val();
+                var province = $('.province').val();
+                var wards = $('.wards').val();
+                var fee_ship = $('.fee_ship').val();
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: '{{ url('/insert-delivery') }}',
+                    method: 'POST',
+                    data: {
+                        city: city,
+                        province: province,
+                        wards: wards,
+                        fee_ship: fee_ship,
+                        _token: _token
+                    },
+                    success: function(data) {
+                        fetch_delivery();
+                    }
+                });
+            });
+            $('.choose').on('change', function() {
+                var action = $(this).attr('id');
+                var ma_id = $(this).val();
+                var _token = $('input[name="_token"]').val();
+                var result = '';
+                if (action == 'city') {
+                    result = 'province';
+                } else {
+                    result = 'wards';
+                }
+                $.ajax({
+                    url: '{{ url('/select-delivery') }}',
+                    method: 'POST',
+                    data: {
+                        action: action,
+                        ma_id: ma_id,
+                        _token: _token
+                    },
+                    success: function(data) {
+                        $('#' + result).html(data);
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         $(document).ready(function() {
             //BOX BUTTON SHOW AND CLOSE
@@ -301,15 +403,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         });
     </script>
-    <script src="https://cdn.tiny.cloud/1/cn4n0ijblnfk6yrhiudmbpmgx6ytkepsu3zbhlwt2gnl3mdp/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/cn4n0ijblnfk6yrhiudmbpmgx6ytkepsu3zbhlwt2gnl3mdp/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
     <script>
-       tinymce.init({
-         selector: '#ckeditor1',
-         plugins: 'powerpaste advcode table lists checklist',
-         toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
-       });
+        tinymce.init({
+            selector: '#ckeditor1',
+            plugins: 'powerpaste advcode table lists checklist',
+            toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
+        });
     </script>
- 
+
     <!-- //calendar -->
 </body>
 

@@ -5,6 +5,8 @@ use App\Http\Controllers\BrandProduct;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryProduct;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;    
@@ -77,6 +79,16 @@ Route::get('/active-product/{product_id}', [ProductController::class, 'active_pr
 Route::post('/save-product', [ProductController::class, 'save_product']);
 Route::post('/update-product/{product_id}', [ProductController::class, 'update_product']);
 
+//Coupon
+Route::get('/unset-coupon', [CouponController::class, 'unset_coupon']);
+Route::post('/check-coupon', [CartController::class, 'check_coupon']);
+Route::get('/insert-coupon', [CouponController::class, 'insert_coupon']);
+Route::get('/list-coupon', [CouponController::class, 'list_coupon']);
+Route::post('/insert-coupon-code', [CouponController::class, 'insert_coupon_code']);
+Route::get('/delete-coupon/{coupon_id}', [CouponController::class, 'delete_coupon']);
+
+
+
 
 //Cart
 Route::post('/check-coupon',[CartController::class, 'check_coupon']);
@@ -109,6 +121,7 @@ Route::get('/payment', [CheckoutController::class, 'payment']);
 Route::post('/save-checkout-customer', [CheckoutController::class, 'save_checkout_customer']);
 
 
+<<<<<<< HEAD
 //order
 Route::get('/manage_order', [CheckoutController::class, 'manage_order']);
 Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
@@ -120,3 +133,16 @@ Route::get('/delete-slide/{slide_id}',[SliderController::class, 'delete_slide'])
 Route::post('/insert-slider',[SliderController::class, 'insert_slider']);
 Route::get('/unactive-slide/{slide_id}',[SliderController::class, 'unactive_slide']);
 Route::get('/active-slide/{slide_id}',[SliderController::class, 'active_slide']);
+=======
+//Order
+Route::get('/manage_order', [CheckoutController::class, 'manage_order']);
+Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
+
+//Delivery
+
+Route::get('/delivery', [DeliveryController::class, 'delivery']);
+Route::post('/insert-delivery', [DeliveryController::class, 'insert_delivery']);
+Route::post('/select-delivery', [DeliveryController::class, 'select_delivery']);
+Route::post('/select-feeship', [DeliveryController::class, 'select_feeship']);
+Route::post('/update-feeship', [DeliveryController::class, 'update_feeship']);
+>>>>>>> c06c776eb76d0141571c9471c9e80386ca2b33ed
