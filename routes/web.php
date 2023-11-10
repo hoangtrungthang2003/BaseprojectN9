@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryProduct;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SliderController;    
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,6 +79,13 @@ Route::post('/update-product/{product_id}', [ProductController::class, 'update_p
 
 
 //Cart
+Route::post('/check-coupon',[CartController::class, 'check_coupon']);
+
+Route::get('/unset-coupon',[CartController::class, 'unset_coupon']);
+Route::get('/insert-coupon',[CartController::class, 'insert_coupon']);
+Route::get('/delete-coupon/{coupon_id}',[CartController::class, 'delete_coupon']);
+Route::get('/list-coupon',[CartController::class, 'list_coupon']);
+Route::post('/insert-coupon-code',[CartController::class, 'insert_coupon_code']);
 Route::post('/update-cart-quantity', [CartController::class, 'update_cart_quantity']);
 Route::post('/update-cart', [CartController::class, 'update_cart']);
 Route::post('/save-cart', [CartController::class, 'save_cart']);
@@ -101,6 +109,14 @@ Route::get('/payment', [CheckoutController::class, 'payment']);
 Route::post('/save-checkout-customer', [CheckoutController::class, 'save_checkout_customer']);
 
 
-//
+//order
 Route::get('/manage_order', [CheckoutController::class, 'manage_order']);
 Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
+
+//Banner
+Route::get('/manage-slider',[SliderController::class, 'manage_slider']);
+Route::get('/add-slider',[SliderController::class, 'add_slider']);
+Route::get('/delete-slide/{slide_id}',[SliderController::class, 'delete_slide']);
+Route::post('/insert-slider',[SliderController::class, 'insert_slider']);
+Route::get('/unactive-slide/{slide_id}',[SliderController::class, 'unactive_slide']);
+Route::get('/active-slide/{slide_id}',[SliderController::class, 'active_slide']);
