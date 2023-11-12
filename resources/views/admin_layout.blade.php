@@ -31,7 +31,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="{{ asset('public/backend/js/morris.js') }}"></script>
 </head>
 
-<body>
+<body>/
     <section id="container">
         <!--header start-->
         <header class="header fixed-top clearfix">
@@ -85,9 +85,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul class="sidebar-menu" id="nav-accordion">
                         <li>
                             <a class="active" href="{{ URL::to('/dashboard') }}">
-                                <i class="fa fa-dashboard"></i>
+                                <i class="fa fa-book"></i>
                                 <span>Tổng quan</span>
                             </a>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-book"></i>
+                                <span>Slider</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="{{URL::to('/manage-slider')}}">Liệt kê slider</a></li>
+                                <li><a href="{{URL::to('/add-slider')}}">Thêm slider</a></li>
+                            </ul>
                         </li>
 
                         <li class="sub-menu">

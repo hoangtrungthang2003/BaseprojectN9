@@ -10,6 +10,7 @@ use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SliderController;    
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,6 +92,13 @@ Route::get('/delete-coupon/{coupon_id}', [CouponController::class, 'delete_coupo
 
 
 //Cart
+Route::post('/check-coupon',[CartController::class, 'check_coupon']);
+
+Route::get('/unset-coupon',[CartController::class, 'unset_coupon']);
+Route::get('/insert-coupon',[CartController::class, 'insert_coupon']);
+Route::get('/delete-coupon/{coupon_id}',[CartController::class, 'delete_coupon']);
+Route::get('/list-coupon',[CartController::class, 'list_coupon']);
+Route::post('/insert-coupon-code',[CartController::class, 'insert_coupon_code']);
 Route::post('/update-cart-quantity', [CartController::class, 'update_cart_quantity']);
 Route::post('/update-cart', [CartController::class, 'update_cart']);
 Route::post('/save-cart', [CartController::class, 'save_cart']);
@@ -117,6 +125,19 @@ Route::post('/calculate-fee', [CheckoutController::class, 'calculate_fee']);
 Route::post('/select-delivery-home', [CheckoutController::class, 'select_delivery_home']);
 Route::post('/confirm-order', [CheckoutController::class, 'confirm_order']);
 
+<<<<<<< HEAD
+//order
+Route::get('/manage_order', [CheckoutController::class, 'manage_order']);
+Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
+
+//Banner
+Route::get('/manage-slider',[SliderController::class, 'manage_slider']);
+Route::get('/add-slider',[SliderController::class, 'add_slider']);
+Route::get('/delete-slide/{slide_id}',[SliderController::class, 'delete_slide']);
+Route::post('/insert-slider',[SliderController::class, 'insert_slider']);
+Route::get('/unactive-slide/{slide_id}',[SliderController::class, 'unactive_slide']);
+Route::get('/active-slide/{slide_id}',[SliderController::class, 'active_slide']);
+=======
 //Order
 Route::get('/manage-order', [OrderController::class, 'manage_order']);
 Route::get('/view-order/{order_code}', [OrderController::class, 'view_order']); 
@@ -128,3 +149,4 @@ Route::post('/insert-delivery', [DeliveryController::class, 'insert_delivery']);
 Route::post('/select-delivery', [DeliveryController::class, 'select_delivery']);
 Route::post('/select-feeship', [DeliveryController::class, 'select_feeship']);
 Route::post('/update-feeship', [DeliveryController::class, 'update_feeship']);
+>>>>>>> c06c776eb76d0141571c9471c9e80386ca2b33ed
