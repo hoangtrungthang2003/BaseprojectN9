@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
+    <title>Home | Shop-online</title>
     <link href="{{ asset('public/frontend/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontend/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontend/css/prettyPhoto.css') }}" rel="stylesheet">
@@ -34,8 +34,8 @@
                     <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                                <li><a href="#"><i class="fa fa-phone"></i> +84 972 427 204</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i> nhom9_dacs@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -59,34 +59,10 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="{{ 'public/frontend/images/home/logo.png' }}"
+                            <a href=""><img src="{{ 'public/frontend/images/home/pngegg.png' }}" width="150"
                                     alt="" /></a>
                         </div>
-                        <div class="btn-group pull-right">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa"
-                                    data-toggle="dropdown">
-                                    USA
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">UK</a></li>
-                                </ul>
-                            </div>
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa"
-                                    data-toggle="dropdown">
-                                    DOLLAR
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Canadian Dollar</a></li>
-                                    <li><a href="#">Pound</a></li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
@@ -155,11 +131,9 @@
 
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">Tin tức<i class="fa fa-angle-down"></i></a>
 
                                 </li>
                                 <li><a href="{{ URL::to('/show-cart') }}">Giỏ hàng</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -194,25 +168,27 @@
                             }
                         </style>
                         <div class="carousel-inner">
-                        @php 
-                            $i = 0;
-                        @endphp
-                        @foreach($slider as $key => $slide)
-                            @php 
-                                $i++;
+                            @php
+                                $i = 0;
                             @endphp
-                            <div class="item {{$i==1 ? 'active' : '' }}">
-                                
-                                <div class="col-sm-12">
-                                    <img alt="{{$slide->slider_desc}}" src="{{asset('public/uploads/slider/'.$slide->slider_image)}}" height="200" width="100%" class="img img-responsive img-slider">
-                                   
+                            @foreach ($slider as $key => $slide)
+                                @php
+                                    $i++;
+                                @endphp
+                                <div class="item {{ $i == 1 ? 'active' : '' }}" style="padding: 0">
+
+                                    <div class="col-sm-12">
+                                        <img alt="{{ $slide->slider_desc }} " style="height: auto;"
+                                            src="{{ asset('public/uploads/slider/' . $slide->slider_image) }}"
+                                            height="200" width="100%" class="img img-responsive img-slider">
+
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach  
-                          
-                            
+                            @endforeach
+
+
                         </div>
-                        
+
                         <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
                             <i class="fa fa-angle-left"></i>
                         </a>
@@ -220,7 +196,7 @@
                             <i class="fa fa-angle-right"></i>
                         </a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -288,72 +264,14 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-2">
-                        <div class="companyinfo">
-                            <h2><span>e</span>-shopper</h2>
+                    <div class="col-sm-4">
+                        <div class="companyinfo" >
+                            <h2>SHOP<span>-Online</span></h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
                         </div>
                     </div>
-                    <div class="col-sm-7">
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="{{ 'public/frontend/images/home/iframe1.png' }}" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
+                    <div class="col-sm-5">
 
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="{{ 'public/frontend/images/home/iframe2.png' }}" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="{{ 'public/frontend/images/home/iframe3.png' }}" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="{{ 'public/frontend/images/home/iframe4.png' }}" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="address">
@@ -455,54 +373,61 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('.send_order').click(function() {
-                swal({
-                title: "Xác nhận đơn hàng",
-                text: "Đơn hàng sẽ không được hoàn trả khi đặt, bạn có muốn đặt không?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-danger",
-                confirmButtonText: "Cảm ơn, Mua hàng",
-                cancelButtonText: "Đóng, chưa mua",
-                closeOnConfirm: false,
-                closeOnCancel: false
-                },
-                function(isConfirm){
-                    if (isConfirm) {
+                Swal.fire({
+                    title: "Xác nhận đơn hàng",
+                    text: "Đơn hàng sẽ không được hoàn trả khi đặt, bạn có muốn đặt không?",
+                    showCancelButton: true,
+                    confirmButtonText: "Cảm ơn, Mua hàng",
+                    cancelButtonText: "Đóng, chưa mua",
+                }).then((result) => {
+                    if (result.isConfirmed) {
                         var shipping_email = $('.shipping_email').val();
-                var shipping_name = $('.shipping_name').val();
-                var shipping_address = $('.shipping_address').val();
-                var shipping_phone = $('.shipping_phone').val();
-                var shipping_notes = $('.shipping_notes').val();
-                var shipping_method = $('.payment_select').val();
-                var order_fee = $('.order_fee').val();
-                var order_coupon = $('.order_coupon').val();
-                var _token = $('input[name="_token"]').val();
-                $.ajax({
-                    url: '{{ url('/confirm-order') }}',
-                    method: 'POST',
-                    data: {
-                        shipping_email: shipping_email,
-                        shipping_name: shipping_name,
-                        shipping_address: shipping_address,
-                        shipping_phone: shipping_phone,
-                        shipping_notes: shipping_notes,
-                        shipping_method: shipping_method,
-                        order_fee: order_fee,
-                        order_coupon: order_coupon,
-                        _token: _token
-                    },
-                    success: function() {
-                        swal("Đơn hàng", "Đơn hàng của bạn đã được gửi thành công", "success");
-                    }
-                });
-                    window.setTimeout(function()){
-                        location.reload();
-                    }, 3000);
+                        var shipping_name = $('.shipping_name').val();
+                        var shipping_address = $('.shipping_address').val();
+                        var shipping_phone = $('.shipping_phone').val();
+                        var shipping_notes = $('.shipping_notes').val();
+                        var shipping_method = $('.payment_select').val();
+                        var order_fee = $('.order_fee').val();
+                        var order_coupon = $('.order_coupon').val();
+                        var _token = $('input[name="_token"]').val();
+                        $.ajax({
+                            url: '{{ url('/confirm-order') }}',
+                            method: 'POST',
+                            data: {
+                                shipping_email: shipping_email,
+                                shipping_name: shipping_name,
+                                shipping_address: shipping_address,
+                                shipping_phone: shipping_phone,
+                                shipping_notes: shipping_notes,
+                                shipping_method: shipping_method,
+                                order_fee: order_fee,
+                                order_coupon: order_coupon,
+                                _token: _token
+                            },
+                            success: function() {
+                                Swal.fire("Đơn hàng",
+                                    "Đơn hàng của bạn đã được gửi thành công",
+                                    "success");
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(xhr.responseText);
+                                Swal.fire(
+                                    "Lỗi",
+                                    "Có lỗi xảy ra khi xác nhận đơn hàng. Vui lòng thử lại.",
+                                    "error"
+                                );
+                            }
+                        });
+                        window.setTimeout(function() {
+                            location.reload();
+                        }, 3000);
                     } else {
-                        swal("Đã đóng", "Đơn hàng chưa được gửi, làm ơn hoàn tất đơn hàng", "error");
+                        Swal.fire("Đã đóng", "Đơn hàng chưa được gửi, làm ơn hoàn tất đơn hàng",
+                            "error");
                     }
                 });
-                
+
+
             });
         });
     </script>
@@ -548,59 +473,58 @@
         });
     </script>
     <script type="text/javascript">
-    $(document).ready(function(){
-        $('.choose').on('change', function() {
-            var action = $(this).attr('id');
-            var ma_id = $(this).val();
-            var _token = $('input[name="_token"]').val();
-            var result = '';
-            if (action == 'city') {
-                result = 'province';
-            } else {
-                result = 'wards';
-            }
-            $.ajax({
-                url: '{{ url('/select-delivery-home') }}',
-                method: 'POST',
-                data: {
-                    action: action,
-                    ma_id: ma_id,
-                    _token: _token
-                },
-                success: function(data) {
-                    $('#' + result).html(data);
+        $(document).ready(function() {
+            $('.choose').on('change', function() {
+                var action = $(this).attr('id');
+                var ma_id = $(this).val();
+                var _token = $('input[name="_token"]').val();
+                var result = '';
+                if (action == 'city') {
+                    result = 'province';
+                } else {
+                    result = 'wards';
                 }
+                $.ajax({
+                    url: '{{ url('/select-delivery-home') }}',
+                    method: 'POST',
+                    data: {
+                        action: action,
+                        ma_id: ma_id,
+                        _token: _token
+                    },
+                    success: function(data) {
+                        $('#' + result).html(data);
+                    }
+                });
             });
         });
-    });
     </script>
     <script type="text/javascript">
-        &(document).ready(function(){
-            $('.calculate_delivery').click(function(){
+        $(document).ready(function() {
+            $('.calculate_delivery').click(function() {
                 var matp = $('.city').val();
                 var maqh = $('.province').val();
                 var xaid = $('.wards').val();
                 var _token = $('input[name="_token"]').val();
-                if(matp == '' && maqh == '' && xaid == ''){
+                if (matp == '' && maqh == '' && xaid == '') {
                     alert('Làm ơn chọn để tính phí vận chuyển');
-                }else{
+                } else {
                     $.ajax({
-                    url: '{{ url('/calculate-fee') }}',
-                    method: 'POST',
-                    data: {
-                        matp: matp,
-                        maqh: maqh,
-                        xaid: xaid,
-                        _token: _token
-                    },
-                    success: function() {
-                        $('#' + result).html(data);
-                        location.reload();
-                    }
-                });
-            }
+                        url: '{{ url('/calculate-fee') }}',
+                        method: 'POST',
+                        data: {
+                            matp: matp,
+                            maqh: maqh,
+                            xaid: xaid,
+                            _token: _token
+                        },
+                        success: function(data) {
+                            location.reload();
+                        }
+                    });
+                }
+            });
         });
-    });
     </script>
 </body>
 

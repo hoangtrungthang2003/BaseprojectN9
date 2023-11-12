@@ -38,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--logo start-->
             <div class="brand">
                 <a href="index.html" class="logo">
-                    VISITORS
+                    dashboard
                 </a>
                 <div class="sidebar-toggle-box">
                     <div class="fa fa-bars"></div>
@@ -96,8 +96,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <span>Slider</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="{{URL::to('/manage-slider')}}">Liệt kê slider</a></li>
-                                <li><a href="{{URL::to('/add-slider')}}">Thêm slider</a></li>
+                                <li><a href="{{ URL::to('/manage-slider') }}">Liệt kê slider</a></li>
+                                <li><a href="{{ URL::to('/add-slider') }}">Thêm slider</a></li>
                             </ul>
                         </li>
 
@@ -107,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <span>Đơn hàng</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="{{ URL::to('/manage_order') }}">Quản lý đơn hàng</a>
+                                <li><a href="{{ URL::to('/manage-order') }}">Quản lý đơn hàng</a>
                                 </li>
                             </ul>
                         </li>
@@ -178,7 +178,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!-- footer -->
             <div class="footer">
                 <div class="wthree-copyright">
-                    <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+                    <p>© 2023 managers. A page where everyone can manage an online shop | Designed by <a href="https://github.com/hoangtrungthang2003/BaseprojectN9">Group 9 - Basic project</a>
+                    </p>
                 </div>
             </div>
             <!-- / footer -->
@@ -196,7 +197,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript">
         $(document).ready(function() {
             fetch_delivery();
-            function fetch_delivery(){
+
+            function fetch_delivery() {
                 var _token = $('input[name="_token"]').val();
                 $.ajax({
                     url: '{{ url('/select-feeship') }}',
@@ -209,7 +211,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     }
                 });
             }
-            $(document).on('blur','.fee_feeship_edit', function(){
+            $(document).on('blur', '.fee_feeship_edit', function() {
                 var feeship_id = $(this).data('feeship_id');
                 var fee_value = $(this).text();
                 var _token = $('input[name="_token"]').val();
@@ -219,7 +221,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     method: 'POST',
                     data: {
                         feeship_id: feeship_id,
-                        fee_value:fee_value,
+                        fee_value: fee_value,
                         _token: _token
                     },
                     success: function(data) {
@@ -227,7 +229,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     }
                 });
             });
-            $('.add_delivery').click(function(){
+            $('.add_delivery').click(function() {
                 var city = $('.city').val();
                 var province = $('.province').val();
                 var wards = $('.wards').val();

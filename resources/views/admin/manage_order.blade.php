@@ -23,6 +23,7 @@
               
               <th>Thứ tự</th>
               <th>Mã đơn hàng</th>
+              <th>Ngày tháng đặt hàng</th>
               <th>Tình trạng đơn hàng</th>
               
               <th style="width:30px;"></th>
@@ -40,6 +41,7 @@
             <tr>
               <td><i>{{$i}}</i></label></td>
               <td>{{$ord->order_code}}</td>
+              <td>{{$ord->created_at}}</td>
               <td>@if($ord->order_status==1)
                     Đơn hàng mới
                   @else
@@ -47,8 +49,8 @@
                   @endif
               </td>
               <td>
-                <a href="{{URL::to('/view-order/'.$ord->order_code)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-eye text-success text-active"></i></a>
-                <a onclick="return confirm('Bạn có chắc là muốn xoá thương hiệu này không?')" href="{{URL::to('/delete-order/'.$ord->order_code)}}" class="active styling-delete" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
+                <a href="{{URL::to('view-order/'.$ord->order_code)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-eye text-success text-active"></i></a>
+                <a onclick="return confirm('Bạn có chắc là muốn xoá thương hiệu này không?')" href="{{URL::to('delete-order/'.$ord->order_code)}}" class="active styling-delete" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
               </td>
             </tr>
             @endforeach

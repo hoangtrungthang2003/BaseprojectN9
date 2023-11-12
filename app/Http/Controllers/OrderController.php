@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-Use App\Feeship;
-Use App\Shipping;
+Use App\Models\Feeship;
+Use App\Models\Shipping;
 Use App\Models\Order;
-Use App\OrderDetails;
-Use App\Customer;
+Use App\Models\OrderDetails;
+Use App\Models\Customer;
 
 class OrderController extends Controller
 {
@@ -24,6 +24,9 @@ class OrderController extends Controller
         $order_details = OrderDetails::with('product')->where('order_code',$order_code)->get();
         return view('admin.view_order')->with(compact('order_details','customer','shipping','order_details'));
     }
+    public function show(){
+        echo ('hello');
+        }
     public function manage_order(){
         $order = Order::orderby('created_at','DESC')->get();
         return view('admin.manage_order')->with(compact('order'));

@@ -14,6 +14,6 @@ class OrderDetails extends Model
     protected $primaryKey = 'order_details_id';
     protected $table = 'tbl_order_details';
     public function product(){
-        return $this->belongsTo('App\Product','product_id');
+        return $this->belongsTo('App\Models\Product','product_id');
     }
 }

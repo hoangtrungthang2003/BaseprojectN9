@@ -10,15 +10,15 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 use PSpell\Dictionary;
-session_start();
 Use App\Models\City;
-Use App\Province;
-Use App\Wards;
-Use App\Feeship;
+Use App\Models\Province;
+Use App\Models\Wards;
+Use App\Models\Feeship;
 
-Use App\Shipping;
-Use App\Order;
-Use App\OrderDetails;
+Use App\Models\Shipping;
+Use App\Models\Order;
+Use App\Models\OrderDetails;
+session_start();
 class CheckoutController extends Controller
 {
     public function confirm_order(Request $request){
@@ -50,7 +50,7 @@ class CheckoutController extends Controller
                 $order_details->order_code = $checkout_code;
                 $order_details->product_id = $cart['product_id'];
                 $order_details->product_name = $cart['product_name'];
-                $order_details->product_price = $cart['product_price'];
+                $order_details->product_price = (double) $cart['product_price'];
                 $order_details->product_sales_quantity = $cart['product_qty'];
                 $order_details->product_coupon = $data['order_coupon'];
                 $order_details->product_feeship = $data['order_fee'];

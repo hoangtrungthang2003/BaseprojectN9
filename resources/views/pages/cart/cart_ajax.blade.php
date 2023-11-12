@@ -56,7 +56,7 @@
                                         <td class="cart_quantity">
                                             <div class="cart_quantity_button">
 
-                                                <input class="cart_quantity_" type="number" min="1"
+                                                <input class="cart_quantity_" type="number" min="1" style="width: 80px"
                                                     name="cart_qty[{{ $cart['session_id'] }}]"
                                                     value="{{ $cart['product_qty'] }}">
                                                 <input type="hidden" value="" name="rowId_cart" class="form-control">

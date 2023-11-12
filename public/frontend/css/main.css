@@ -567,7 +567,6 @@ ul.sub-menu {
 ******* Home ******
 **************************/
 
-
 #slider {
   padding-bottom: 45px;
 }
@@ -579,11 +578,6 @@ ul.sub-menu {
 .carousel-indicators li.active {
 	  background: #FE980F;
 }
-
-.item {
-  padding-left: 100px;
-}
-
 
 .pricing {
   position: absolute;
@@ -1192,6 +1186,8 @@ h2.title {
 
 #similar-product .carousel-inner .item{
 	padding-left:0px;
+  height: fit-content;
+  
 }
 
 #similar-product .carousel-inner .item img {

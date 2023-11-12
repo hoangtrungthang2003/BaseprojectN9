@@ -92,13 +92,6 @@ Route::get('/delete-coupon/{coupon_id}', [CouponController::class, 'delete_coupo
 
 
 //Cart
-Route::post('/check-coupon',[CartController::class, 'check_coupon']);
-
-Route::get('/unset-coupon',[CartController::class, 'unset_coupon']);
-Route::get('/insert-coupon',[CartController::class, 'insert_coupon']);
-Route::get('/delete-coupon/{coupon_id}',[CartController::class, 'delete_coupon']);
-Route::get('/list-coupon',[CartController::class, 'list_coupon']);
-Route::post('/insert-coupon-code',[CartController::class, 'insert_coupon_code']);
 Route::post('/update-cart-quantity', [CartController::class, 'update_cart_quantity']);
 Route::post('/update-cart', [CartController::class, 'update_cart']);
 Route::post('/save-cart', [CartController::class, 'save_cart']);
