@@ -2,7 +2,7 @@
 @section('content')
 
 	<section id="form"><!--form-->
-		<div class="container">
+		<div class="container" style="width:100%">
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
