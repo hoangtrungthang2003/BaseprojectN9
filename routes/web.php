@@ -120,8 +120,6 @@ Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/payment', [CheckoutController::class, 'payment']);
 Route::post('/save-checkout-customer', [CheckoutController::class, 'save_checkout_customer']);
 
-
-<<<<<<< HEAD
 //order
 Route::get('/manage_order', [CheckoutController::class, 'manage_order']);
 Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
@@ -133,10 +131,6 @@ Route::get('/delete-slide/{slide_id}',[SliderController::class, 'delete_slide'])
 Route::post('/insert-slider',[SliderController::class, 'insert_slider']);
 Route::get('/unactive-slide/{slide_id}',[SliderController::class, 'unactive_slide']);
 Route::get('/active-slide/{slide_id}',[SliderController::class, 'active_slide']);
-=======
-//Order
-Route::get('/manage_order', [CheckoutController::class, 'manage_order']);
-Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
 
 //Delivery
 
@@ -145,4 +139,4 @@ Route::post('/insert-delivery', [DeliveryController::class, 'insert_delivery']);
 Route::post('/select-delivery', [DeliveryController::class, 'select_delivery']);
 Route::post('/select-feeship', [DeliveryController::class, 'select_feeship']);
 Route::post('/update-feeship', [DeliveryController::class, 'update_feeship']);
->>>>>>> c06c776eb76d0141571c9471c9e80386ca2b33ed
+

@@ -8,14 +8,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use PSpell\Dictionary;
 use App\Models\Slider;
+use Illuminate\Support\Facades\View;
 session_start();
 
 class HomeController extends Controller
 {
+    
     public function show(){
-
-        $slider = Slider::orderBy('slider_id','DESC')->where('slider_status','1')->take(4)->get();
-
 
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand_product')->orderby('brand_id','desc')->get();
@@ -25,7 +24,7 @@ class HomeController extends Controller
         // ->orderBy('tbl_product.product_id', 'desc')
         // ->get();
         $all_product = DB::table('tbl_product')->where('product_status','0')->orderBy('product_id','desc')->limit(4)->get();
-        return view('pages.home')->with('category',$cate_product)->with('brand', $brand_product)->with('all_product',$all_product)->with('slider',$slider);
+        return view('pages.home')->with('category',$cate_product)->with('brand', $brand_product)->with('all_product',$all_product);
     }
     public function search(Request $request){
 
