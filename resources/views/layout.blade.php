@@ -480,6 +480,60 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            $('.send_order').click(function() {
+                swal({
+                title: "Xác nhận đơn hàng",
+                text: "Đơn hàng sẽ không được hoàn trả khi đặt, bạn có muốn đặt không?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Cảm ơn, Mua hàng",
+                cancelButtonText: "Đóng, chưa mua",
+                closeOnConfirm: false,
+                closeOnCancel: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        var shipping_email = $('.shipping_email').val();
+                var shipping_name = $('.shipping_name').val();
+                var shipping_address = $('.shipping_address').val();
+                var shipping_phone = $('.shipping_phone').val();
+                var shipping_notes = $('.shipping_notes').val();
+                var shipping_method = $('.payment_select').val();
+                var order_fee = $('.order_fee').val();
+                var order_coupon = $('.order_coupon').val();
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: '{{ url('/confirm-order') }}',
+                    method: 'POST',
+                    data: {
+                        shipping_email: shipping_email,
+                        shipping_name: shipping_name,
+                        shipping_address: shipping_address,
+                        shipping_phone: shipping_phone,
+                        shipping_notes: shipping_notes,
+                        shipping_method: shipping_method,
+                        order_fee: order_fee,
+                        order_coupon: order_coupon,
+                        _token: _token
+                    },
+                    success: function() {
+                        swal("Đơn hàng", "Đơn hàng của bạn đã được gửi thành công", "success");
+                    }
+                });
+                    window.setTimeout(function()){
+                        location.reload();
+                    }, 3000);
+                    } else {
+                        swal("Đã đóng", "Đơn hàng chưa được gửi, làm ơn hoàn tất đơn hàng", "error");
+                    }
+                });
+                
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
             $('.add-to-cart').click(function() {
                 var id = $(this).data('id_product');
                 var cart_product_id = $('.cart_product_id_' + id).val();
@@ -518,6 +572,61 @@
                 });
             });
         });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.choose').on('change', function() {
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var result = '';
+            if (action == 'city') {
+                result = 'province';
+            } else {
+                result = 'wards';
+            }
+            $.ajax({
+                url: '{{ url('/select-delivery-home') }}',
+                method: 'POST',
+                data: {
+                    action: action,
+                    ma_id: ma_id,
+                    _token: _token
+                },
+                success: function(data) {
+                    $('#' + result).html(data);
+                }
+            });
+        });
+    });
+    </script>
+    <script type="text/javascript">
+        &(document).ready(function(){
+            $('.calculate_delivery').click(function(){
+                var matp = $('.city').val();
+                var maqh = $('.province').val();
+                var xaid = $('.wards').val();
+                var _token = $('input[name="_token"]').val();
+                if(matp == '' && maqh == '' && xaid == ''){
+                    alert('Làm ơn chọn để tính phí vận chuyển');
+                }else{
+                    $.ajax({
+                    url: '{{ url('/calculate-fee') }}',
+                    method: 'POST',
+                    data: {
+                        matp: matp,
+                        maqh: maqh,
+                        xaid: xaid,
+                        _token: _token
+                    },
+                    success: function() {
+                        $('#' + result).html(data);
+                        location.reload();
+                    }
+                });
+            }
+        });
+    });
     </script>
 </body>
 

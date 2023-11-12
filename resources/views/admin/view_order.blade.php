@@ -4,7 +4,7 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Thông tin khách 
+        Thông tin đăng nhập
       </div>
       
       <div class="table-responsive">
@@ -20,7 +20,8 @@
             <tr>
               
               <th>Tên khách hàng</th>
-              <th>số điện thoại </th>
+              <th>Số điện thoại </th>
+              <th>Email </th>
               
               <th style="width:30px;"></th>
             </tr>
@@ -28,9 +29,9 @@
           <tbody>
               
             <tr>
-              <td>{{$order_by_id->customer_name}}</td>
-              <td>{{$order_by_id->customer_phone}}</td>
-              
+              <td>{{$customer->customer_name}}</td>
+              <td>{{$customer->customer_phone}}</td>
+              <td>{{$customer->customer_email}}</td>
             
             </tr>
            
@@ -63,6 +64,9 @@
               <th>Tên người vận chuyển</th>
               <th>Địa chỉ </th>
               <th>Số điện thoại </th>
+              <th>Email </th>
+              <th>Ghi chú </th>
+              <th>Hình thức thanh toán </th>
               
               <th style="width:30px;"></th>
             </tr>
@@ -70,9 +74,12 @@
           <tbody>
               
             <tr>
-              <td>{{$order_by_id->shipping_name}}</td>
-              <td>{{$order_by_id->shipping_address}}</td>
-              <td>{{$order_by_id->shipping_phone}}</td>
+              <td>{{$shipping->shipping_name}}</td>
+              <td>{{$shipping->shipping_address}}</td>
+              <td>{{$shipping->shipping_phone}}</td>
+              <td>{{$shipping->shipping_email}}</td>
+              <td>{{$shipping->shipping_notes}}</td>
+              <td>@if($shipping->shipping_method==0) Chuyển khoản @else Tiền mặt @endif</td>
               
             
             </tr>
@@ -90,27 +97,7 @@
       <div class="panel-heading">
         Liệt kê chi tiết đơn hàng
       </div>
-      <div class="row w3-res-tb">
-        <div class="col-sm-5 m-b-xs">
-          <select class="input-sm form-control w-sm inline v-middle">
-            <option value="0">Bulk action</option>
-            <option value="1">Delete selected</option>
-            <option value="2">Bulk edit</option>
-            <option value="3">Export</option>
-          </select>
-          <button class="btn btn-sm btn-default">Apply</button>                
-        </div>
-        <div class="col-sm-4">
-        </div>
-        <div class="col-sm-3">
-          <div class="input-group">
-            <input type="text" class="input-sm form-control" placeholder="Search">
-            <span class="input-group-btn">
-              <button class="btn btn-sm btn-default" type="button">Go!</button>
-            </span>
-          </div>
-        </div>
-      </div>
+      
       <div class="table-responsive">
         <?php
         $message = Session::get('message');
@@ -128,44 +115,39 @@
                 </label>
               </th>
               <th>Tên sản phẩm</th>
-              <th>số lượng</th>
-              <th>giá</th>
-              <th>tổng tiền</th> 
+              <th>Số lượng</th>
+              <th>Giá sản phẩm</th>
+              <th>Tổng tiền</th> 
               <th style="width:30px;"></th>
             </tr>
           </thead>
           <tbody>
-            @foreach($order_by_id as $v_content)
+            @php
+            @i = 0;
+            $total = 0;
+            @endphp
+            @foreach($order_details as $key => $details)
+            @php
+            @i++;
+            $subtotal = $details->product_price*$details->product_sales_quantity;
+            $total+=$subtotal;
+            @endphp
             <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>{{$order_by_id->product_name}}</td>
-              <td>{{$order_by_id->product_sale_quantity}}</td>
-              <td>{{$order_by_id->product_price}}</td>
-              <td>{{$order_by_id->product_price*$order_by_id->product_sale_quantity}}</td>
+              <td><i>{{$i}}</i></label></td>
+              <td>{{$details->product_name}}</td>
+              <td>{{$details->product_sale_quantity}}</td>
+              <td>{{number_format($details->product_price ,0,',','.')}} đ</td>
+              <td>{{number_format($subtotal ,0,',','.')}} đ</td>
               
             </tr>
            @endforeach
+           <tr>
+            <td>Thanh toán: {{number_format($total ,0,',','.')}} đ</td>
+           </tr>
           </tbody>
         </table>
       </div>
-      <footer class="panel-footer">
-        <div class="row">
-          
-          <div class="col-sm-5 text-center">
-            <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
-          </div>
-          <div class="col-sm-7 text-right text-center-xs">                
-            <ul class="pagination pagination-sm m-t-none m-b-none">
-              <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-              <li><a href="">1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
-              <li><a href="">4</a></li>
-              <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   </div>
 @endsection

@@ -8,6 +8,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -104,6 +105,7 @@ Route::get('/del-all-product', [CartController::class, 'delete_all_product']);
 
 //Checkout
 Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
+Route::get('/del-fee', [CheckoutController::class, 'del_fee']);
 Route::get('/logout-checkout', [CheckoutController::class, 'logout_checkout']);
 Route::post('/add-customer', [CheckoutController::class, 'add_customer']);
 Route::post('/order-place', [CheckoutController::class, 'order_place']);
@@ -111,11 +113,13 @@ Route::post('/login-customer', [CheckoutController::class, 'login_customer']);
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/payment', [CheckoutController::class, 'payment']);
 Route::post('/save-checkout-customer', [CheckoutController::class, 'save_checkout_customer']);
-
+Route::post('/calculate-fee', [CheckoutController::class, 'calculate_fee']);
+Route::post('/select-delivery-home', [CheckoutController::class, 'select_delivery_home']);
+Route::post('/confirm-order', [CheckoutController::class, 'confirm_order']);
 
 //Order
-Route::get('/manage_order', [CheckoutController::class, 'manage_order']);
-Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
+Route::get('/manage-order', [OrderController::class, 'manage_order']);
+Route::get('/view-order/{order_code}', [OrderController::class, 'view_order']); 
 
 //Delivery
 
